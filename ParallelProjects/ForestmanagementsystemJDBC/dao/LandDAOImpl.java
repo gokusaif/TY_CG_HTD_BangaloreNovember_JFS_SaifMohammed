@@ -119,4 +119,28 @@ public class LandDAOImpl implements LandDAO{
 		return false;
 	}
 
+	@Override
+	public List<LandBean> viewLandDetails(int landId) {
+		List<LandBean> l1= new ArrayList<LandBean>();
+		try(Connection con=DriverManager.getConnection(prop.getProperty("dbUrl"),prop.getProperty("dbUser"),
+				prop.getProperty("dbPassword"));Statement stmt=con.createStatement(); 
+				PreparedStatement pstmt=con.prepareStatement(prop.getProperty("selectQuery"))){
+			pstmt.setInt(1,landId);
+			ResultSet rs=pstmt.executeQuery();
+			while(rs.next()) {
+				land= new LandBean();
+				land.setLandId(rs.getInt(1));
+				land.setLandLocation(rs.getString(2));
+				land.setLandValue(rs.getInt(3));
+				land.setAcquiredDate(rs.getString(4));
+				l1.add(land);
+			}
+			return l1;
+
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 }

@@ -15,7 +15,7 @@ public class Product {
 		while(true) {
 			System.out.println("Enter option to perform operation");
 			System.out.println(" 1.Insert product\n 2.Delete product\n 3.Update Product\n "
-					+ "4.View all products\n 5.Home");
+					+ "4.View all products\n 5.view product details\n 6.Home");
 			int choice=sc.nextInt();
 
 			switch(choice) {
@@ -64,6 +64,18 @@ public class Product {
 				}
 				break;
 			case 5:
+				System.out.println("enter product id to view details");
+				int id2=sc.nextInt();
+				List<ProductBean> l2= services.viewProducts(id2);
+				if(l2.size()!=0) {
+				for (ProductBean product : l2) {
+					System.out.println(product);
+				}}
+				else {
+					System.out.println("productid not found");
+				}
+				break;
+			case 6:
 				Client.main(args);
 				break;
 			default:

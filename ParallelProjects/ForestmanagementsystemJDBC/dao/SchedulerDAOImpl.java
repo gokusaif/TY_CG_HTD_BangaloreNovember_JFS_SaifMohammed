@@ -139,4 +139,30 @@ public class SchedulerDAOImpl implements SchedulerDAO{
 		return false;
 	}
 
+	@Override
+	public List<SchedulerBean> viewSchedules(int schedulerId) {
+		
+		List<SchedulerBean> l1= new ArrayList<SchedulerBean>();
+		try(Connection con=DriverManager.getConnection(prop.getProperty("dbUrl"),prop.getProperty("dbUser"),
+				prop.getProperty("dbPassword"));Statement stmt=con.createStatement(); 
+				PreparedStatement pstmt=con.prepareStatement(prop.getProperty("selectQuery"))){
+			pstmt.setInt(1,schedulerId);
+			ResultSet rs= pstmt.executeQuery();
+			while(rs.next()) {
+				sch= new SchedulerBean();
+				sch.setSchedulerId(rs.getInt(1));
+				sch.setTransport(rs.getString(2));
+				sch.setDate(rs.getString(3));
+				sch.setProductId(rs.getInt(4));
+				sch.setQuantity(rs.getString(5));
+				l1.add(sch);
+			}
+			return l1;
+
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 }

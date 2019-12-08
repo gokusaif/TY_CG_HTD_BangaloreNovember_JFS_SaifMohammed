@@ -181,43 +181,6 @@ public class ClientDAOImpl implements ClientDAO{
 		return false;
 	}
 
-	//			case 2:
-	//				pstmt.setString(2,"haulierid");
-	//				System.out.println("enter new haulier id");
-	//				pstmt.setInt(2,sc.nextInt());
-	//				pstmt.setInt(3,contractId);
-	//				int r1=pstmt.executeUpdate();
-	//				if(r1>0) {
-	//					System.out.println("haulier id updated");
-	//				} else {
-	//					System.out.println("not updated");;
-	//				} break;
-	//			case 3:
-	//				pstmt.setString(2,"deliverydate");
-	//				System.out.println("enter new delivery date");
-	//				pstmt.setString(2,sc.next());
-	//				pstmt.setInt(3,contractId);
-	//				int r2=pstmt.executeUpdate();
-	//				if(r2>0) {
-	//					System.out.println("haulier id updated");
-	//				} else {
-	//					System.out.println("not updated");;
-	//				} break;
-	//			case 4:
-	//				pstmt.setString(2,"deliveryday");
-	//				System.out.println("enter new delivery day");
-	//				pstmt.setString(2,sc.next());
-	//				pstmt.setInt(3,contractId);
-	//				int r3=pstmt.executeUpdate();
-	//				if(r3>0) {
-	//					System.out.println("haulier id updated");
-	//				} else {
-	//					System.out.println("not updated");;
-	//				} break;
-
-
-
-
 
 	@Override
 	public boolean clientLogin(String username, String password) {
@@ -238,6 +201,31 @@ public class ClientDAOImpl implements ClientDAO{
 		}
 		return false;
 
+	}
+	@Override
+	public List<ClientBean> viewContracts(int contractId) {
+		List<ClientBean> l1= new ArrayList<ClientBean>();
+		try(Connection con=DriverManager.getConnection(prop.getProperty("dbUrl"),prop.getProperty("dbUser"),
+				prop.getProperty("dbPassword"));Statement stmt=con.createStatement(); 
+				PreparedStatement pstmt=con.prepareStatement(prop.getProperty("selectQuery"))){
+			pstmt.setInt(1,contractId);
+			ResultSet rs=pstmt.executeQuery();
+			while(rs.next()) {
+				contr= new ClientBean();
+				contr.setContractId(rs.getInt(1));
+				contr.setProductId(rs.getInt(2));
+				contr.setHaulierId(rs.getInt(3));
+				contr.setDeliveryDate(rs.getString(4));
+				contr.setDeliveryDay(rs.getString(5));
+
+				l1.add(contr);
+			}
+			return l1;
+
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 

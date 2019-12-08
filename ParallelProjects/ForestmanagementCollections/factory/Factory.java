@@ -6,12 +6,16 @@ import com.cap.forestmanagement.dao.DAOCustomerImpl;
 import com.cap.forestmanagement.dao.DAOImpl;
 import com.cap.forestmanagement.dao.DAOLand;
 import com.cap.forestmanagement.dao.DAOLandImpl;
+import com.cap.forestmanagement.dao.ProductDAO;
+import com.cap.forestmanagement.dao.ProductDAOImpl;
 import com.cap.forestmanagement.services.ClientServices;
 import com.cap.forestmanagement.services.ClientServicesImpl;
 import com.cap.forestmanagement.services.CustomerServices;
 import com.cap.forestmanagement.services.CustomerServicesImpl;
 import com.cap.forestmanagement.services.LandServices;
 import com.cap.forestmanagement.services.LandServicesImpl;
+import com.cap.forestmanagement.services.ProductServices;
+import com.cap.forestmanagement.services.ProductServicesImpl;
 
 public class Factory {
 	
@@ -47,4 +51,14 @@ public class Factory {
 		LandServices servicesL=new LandServicesImpl();
 		return servicesL;
 	}
+    
+    public static ProductDAO objectProductDAO() {
+    	ProductDAO daop= new ProductDAOImpl();
+    	return daop;
+    }
+    
+    public static ProductServices objectProductServices() {
+    	ProductServices servicesp= new ProductServicesImpl();
+    	return servicesp;
+    }
 }

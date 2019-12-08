@@ -12,6 +12,8 @@ public interface LandServices {
 	public boolean addLandDetails(LandBean land);
 	
 	public List<LandBean> showLandDetails();
+
+	public List<LandBean> viewLandDetails(int landId);
 	
 	public boolean updateLandDetails(int landId,int landValue);
 

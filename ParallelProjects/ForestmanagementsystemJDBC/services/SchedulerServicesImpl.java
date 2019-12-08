@@ -40,4 +40,10 @@ public class SchedulerServicesImpl implements SchedulerServices {
 		return dao.updateSchedule1(scheduleId, date);
 	}
 
+	@Override
+	public List<SchedulerBean> viewSchedules(int schedulerId) {
+		
+		return dao.viewSchedules(schedulerId);
+	}
+
 }

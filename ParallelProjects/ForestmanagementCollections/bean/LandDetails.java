@@ -6,9 +6,11 @@ import lombok.Data;
 @Data
 public class LandDetails implements Serializable{
 	
-	private int landId;
+	private Integer landId;
 	private String landLocation;
 	private int landValue;
 	private String acquiredDate;
+	
+	
 
 }

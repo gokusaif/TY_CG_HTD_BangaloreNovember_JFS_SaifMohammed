@@ -11,6 +11,8 @@ public interface CustomerDAO {
 	public boolean deleteCustomer(int customerId);
 
 	public List<CustomerBean> showCustomers();
+	
+	public List<CustomerBean> viewCusstomers(int customerId);
 
 	public boolean updateAddress(CustomerBean cust);
 

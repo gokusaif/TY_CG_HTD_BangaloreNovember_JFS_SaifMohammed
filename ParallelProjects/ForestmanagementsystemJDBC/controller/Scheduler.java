@@ -5,22 +5,25 @@ import java.util.List;
 import java.util.Scanner;
 
 import com.cap.forestmanagementsystemjdbc.bean.ClientBean;
+import com.cap.forestmanagementsystemjdbc.bean.ProductBean;
 import com.cap.forestmanagementsystemjdbc.bean.SchedulerBean;
 import com.cap.forestmanagementsystemjdbc.controller.App;
 import com.cap.forestmanagementsystemjdbc.factory.Factory;
 import com.cap.forestmanagementsystemjdbc.services.ClientServices;
+import com.cap.forestmanagementsystemjdbc.services.ProductServices;
 import com.cap.forestmanagementsystemjdbc.services.SchedulerServices;
 
 public class Scheduler {
 	public static void main(String[] args) {
 		SchedulerServices services= Factory.schedulerServicesObject();
 		ClientServices servicesc=Factory.clientServicesObject();
+		ProductServices productservices=Factory.productServicesObject();
 		Scanner sc= new Scanner(System.in);
 		SchedulerBean scheduler=new SchedulerBean();
 		while(true) {
 			System.out.println("Enter option to perform operation");
 			System.out.println(" 1.Insert schedule\n 2.Delete schedule\n 3.Update schedule details\n "
-					+ "4.View all schedules\n 5.view contracts\n 6.Home");
+					+ "4.View all schedules\n 5.view schedule\n 6.view contracts\n 7.View inventory\n 8.Home");
 			int choice=sc.nextInt();
 
 			switch(choice) {
@@ -92,6 +95,18 @@ public class Scheduler {
 				}
 				break;
 			case 5:
+				System.out.println("enter scheduler id to view");
+				int id2=sc.nextInt();
+				List<SchedulerBean> l3= services.viewSchedules(id2);
+				if(l3.size()!=0) {
+					for (SchedulerBean sch1 : l3) {
+						System.out.println(sch1);
+					} }
+				else {
+					System.out.println("schedule not found");
+				}
+				break;
+			case 6:
 				List<ClientBean> l2= new ArrayList<ClientBean>();
 				l2=servicesc.showContracts();
 				if(l2.size()!=0) {
@@ -102,7 +117,13 @@ public class Scheduler {
 					System.out.println("no data");
 				}
 				break;
-			case 6:
+			case 7:
+				List<ProductBean> l4= productservices.showProducts();
+				for (ProductBean product : l4) {
+					System.out.println(product);
+				}
+				break;
+			case 8:
 				App.main(args);
 				break;
 			default:

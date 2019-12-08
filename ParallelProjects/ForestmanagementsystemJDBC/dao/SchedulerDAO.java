@@ -12,7 +12,9 @@ public boolean deleteSchedule(int scheduleId);
 	public boolean insertSchedule(SchedulerBean sch);
 	
 	public List<SchedulerBean> showSchedules();
-
+	
+	public List<SchedulerBean> viewSchedules(int schedulerId);
+	
 	public boolean updateSchedule(int scheduleId,String quantity);
 
 	public boolean updateSchedule1(int scheduleId,String date);

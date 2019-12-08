@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import com.cap.forestmanagementsystemjdbc.bean.ClientBean;
+import com.cap.forestmanagementsystemjdbc.bean.CustomerBean;
 import com.cap.forestmanagementsystemjdbc.factory.Factory;
 import com.cap.forestmanagementsystemjdbc.services.ClientServices;
 
@@ -23,7 +24,7 @@ public class Client {
 			while(true) {
 				System.out.println("Enter the option to perform operations");
 				System.out.println(" 1.enter contract details\n 2.delete contract\n 3.show all contracts\n"
-						+ " 4.update contract\n 5.Inventory\n 6.Home");
+						+ " 4.update contract\n 5.Inventory\n 6.view contract \n 7.Home");
 				int choice1=sc.nextInt();
 				switch(choice1) {
 				case 1:
@@ -37,7 +38,7 @@ public class Client {
 					client.setHaulierId(sc.nextInt());
 					System.out.println("Enter delivery date");
 					client.setDeliveryDate(sc.next());
-					System.out.println("enter delivery date");
+					System.out.println("enter delivery day");
 					client.setDeliveryDay(sc.next());
 					if(services.addContract(client)) {
 						System.out.println("contract added");
@@ -118,6 +119,19 @@ public class Client {
 					Product.main(args);
 					break;
 				case 6:
+					List<ClientBean> l3= new ArrayList<ClientBean>();
+					System.out.println("enter customer id to display details");
+					int id2=sc.nextInt();
+					l3=services.viewContracts(id2);
+					if(l3.size()!=0) {
+						for (ClientBean cust2 : l3) {
+							System.out.println(cust2);
+						}}
+					else {
+						System.out.println("contract not found");
+					}
+					break;
+				case 7:
 					App.main(args);
 					break;
 				default:

@@ -12,6 +12,8 @@ public interface ProductDAO {
 	
 	public List<ProductBean> showProducts();
 
+	public List<ProductBean> viewProducts(int productId);
+
 	public boolean updateProduct(int productId,String quantity);
 
 	

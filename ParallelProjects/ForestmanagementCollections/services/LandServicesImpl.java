@@ -9,14 +9,20 @@ public class LandServicesImpl implements LandServices{
 	DAOLand dao=Factory.objectDAOLand();
 
 	@Override
-	public void addDetails(LandDetails l) {
-		dao.addDetails(l);
+	public void addDetails(Integer landId,LandDetails l) {
+		dao.addDetails(landId,l);
 		
 	}
 
 	@Override
 	public void displayDetails() {
 		dao.displayDetails();
+		
+	}
+
+	@Override
+	public void removeContract(Integer landId) {
+		dao.removeContract(landId);
 		
 	}
 }

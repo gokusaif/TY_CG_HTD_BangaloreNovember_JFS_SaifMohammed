@@ -11,7 +11,9 @@ public interface CustomerServices {
 	public boolean deleteCustomer(int customerId);
 
 	public List<CustomerBean> showCustomers();
-
+	
+	public List<CustomerBean> viewCusstomers(int customerId);
+	
 	public boolean updateAddress(CustomerBean cust);
 
 	public boolean updateContact(CustomerBean cust);

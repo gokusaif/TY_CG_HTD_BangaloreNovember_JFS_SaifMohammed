@@ -60,5 +60,12 @@ public class ClientServicesImpl implements ClientServices {
 	}
 
 
+	@Override
+	public List<ClientBean> viewContracts(int contractId) {
+		
+		return clientDao.viewContracts(contractId);
+	}
+
+
 
 }

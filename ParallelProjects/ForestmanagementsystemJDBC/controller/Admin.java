@@ -24,7 +24,7 @@ public class Admin {
 			System.out.println("***WELCOME ADMIN***");
 			System.out.println("------------------");
 			System.out.println("Enter option to perform operation");
-			System.out.println(" 1.Insert client\n 2.Remove client\n 3.Show client accounts\n 4.View Contracts\n"
+			System.out.println(" 1.Insert client\n 2.Remove client\n 3.Show client accounts\n 4.View all Contracts\n"
 					+ " 5.Add Contract\n 6.view inventory\n 7.land details\n 8.Customer details\n 9.Home");
 			System.out.print("Option:");
 			int choice=sc.nextInt();

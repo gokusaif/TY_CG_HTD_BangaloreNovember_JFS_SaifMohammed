@@ -14,6 +14,8 @@ public interface SchedulerServices {
 	
 	public List<SchedulerBean> showSchedules();
 
+	public List<SchedulerBean> viewSchedules(int schedulerId);
+
 	public boolean updateSchedule(int scheduleId,String quantity);
 
 	public boolean updateSchedule1(int scheduleId,String date);

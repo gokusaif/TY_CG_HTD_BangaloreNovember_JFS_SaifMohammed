@@ -12,5 +12,5 @@ public class CustomerBean implements Serializable{
 	private String customerTown;
 	private int customerZip;
 	private String customerEmail;
-	private int customerPhone;
+	private String customerPhone;
 }

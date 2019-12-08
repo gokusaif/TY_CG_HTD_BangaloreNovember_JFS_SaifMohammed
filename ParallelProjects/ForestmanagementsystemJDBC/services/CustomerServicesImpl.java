@@ -38,4 +38,10 @@ public class CustomerServicesImpl implements CustomerServices{
 
 		return dao.updateContact(cust);
 	}
+
+	@Override
+	public List<CustomerBean> viewCusstomers(int customerId) {
+		
+		return dao.viewCusstomers(customerId);
+	}
 }

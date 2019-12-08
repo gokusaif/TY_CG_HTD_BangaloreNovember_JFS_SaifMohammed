@@ -34,4 +34,10 @@ public class LandServicesImpl implements LandServices{
 		return dao.updateLandDetails(landId, landValue);
 	}
 
+	@Override
+	public List<LandBean> viewLandDetails(int landId) {
+		
+		return dao.viewLandDetails(landId);
+	}
+
 }

@@ -17,7 +17,7 @@ public class Customer {
 			System.out.println("Enter the option to perform operations");
 			System.out.println(" 1.enter customer details\n 2.delete customer details\n "
 					+ "3.show all customer details\n"
-					+ " 4.update customer details\n 5.Home");
+					+ " 4.update customer details\n 5.View customer details\n 6.Home");
 			int choice1=sc.nextInt();
 			switch(choice1) {
 			case 1:
@@ -36,7 +36,7 @@ public class Customer {
 				System.out.println("enter customer email ");
 				cust.setCustomerEmail(sc.next());
 				System.out.println("enter customer phone ");
-				cust.setCustomerPhone(sc.nextInt());
+				cust.setCustomerPhone(sc.next());
 				if(services.addCustomer(cust)) {
 					System.out.println("customer details added");
 				} else {
@@ -60,7 +60,7 @@ public class Customer {
 						System.out.println(cust2);
 					}}
 				else {
-					System.out.println("no data");
+					System.out.println("customer not found");
 				}
 				break;
 			case 4:
@@ -92,7 +92,7 @@ public class Customer {
 					System.out.println("enter new email");
 					cust.setCustomerEmail(sc.next());
 					System.out.println("enter new phone no");
-					cust.setCustomerPhone(sc.nextInt());
+					cust.setCustomerPhone(sc.next());
 					if(services.updateContact(cust)) {
 						System.out.println("contact details updated");
 					} else {
@@ -105,6 +105,19 @@ public class Customer {
 				break;
 
 			case 5:
+				List<CustomerBean> l2= new ArrayList<CustomerBean>();
+				System.out.println("enter customer id to display details");
+				int id2=sc.nextInt();
+				l2=services.viewCusstomers(id2);
+				if(l2.size()!=0) {
+					for (CustomerBean cust2 : l2) {
+						System.out.println(cust2);
+					}}
+				else {
+					System.out.println("customer not found");
+				}
+				break;
+			case 6:
 				Admin.main(args);
 				break;
 			default:

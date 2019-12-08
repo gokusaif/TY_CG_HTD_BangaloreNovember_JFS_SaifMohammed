@@ -35,4 +35,11 @@ public class ProductServicesImpl implements ProductServices{
 		return dao.updateProduct(productId,quantity);
 	}
 
+
+	@Override
+	public List<ProductBean> viewProducts(int productId) {
+	
+		return dao.viewProducts(productId);
+	}
+
 }

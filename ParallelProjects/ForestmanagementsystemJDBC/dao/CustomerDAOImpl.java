@@ -43,7 +43,7 @@ public class CustomerDAOImpl implements CustomerDAO{
 			pstmt.setString(4,customer.getCustomerTown());
 			pstmt.setInt(5,customer.getCustomerZip());
 			pstmt.setString(6,customer.getCustomerEmail());
-			pstmt.setInt(7,customer.getCustomerPhone());
+			pstmt.setString(7,customer.getCustomerPhone());
 			int count=pstmt.executeUpdate();
 
 			if(count >0) {
@@ -92,7 +92,7 @@ public class CustomerDAOImpl implements CustomerDAO{
 				cust.setCustomerTown(rs.getString(4));
 				cust.setCustomerZip(rs.getInt(5));
 				cust.setCustomerEmail(rs.getString(6));
-				cust.setCustomerPhone(rs.getInt(7));
+				cust.setCustomerPhone(rs.getString(7));
 				l1.add(cust);
 			}
 			return l1;
@@ -131,7 +131,7 @@ public class CustomerDAOImpl implements CustomerDAO{
 				PreparedStatement pstmt=con.prepareStatement(prop.getProperty("updateContact"))) {
 
 			pstmt.setString(1,cust1.getCustomerEmail());
-			pstmt.setInt(2,cust1.getCustomerPhone());
+			pstmt.setString(2,cust1.getCustomerPhone());
 			pstmt.setInt(3,cust1.getCustomerid());
 			int r=pstmt.executeUpdate();
 			if(r>0) {
@@ -142,6 +142,33 @@ public class CustomerDAOImpl implements CustomerDAO{
 				e.getMessage();
 			}
 		return false;
+	}
+
+	@Override
+	public List<CustomerBean> viewCusstomers(int customerId) {
+		List<CustomerBean> l1= new ArrayList<CustomerBean>();
+		try(Connection con=DriverManager.getConnection(prop.getProperty("dbUrl"),prop.getProperty("dbUser"),
+				prop.getProperty("dbPassword"));Statement stmt=con.createStatement(); 
+				PreparedStatement pstmt=con.prepareStatement(prop.getProperty("selectQuery"))){
+			pstmt.setInt(1,customerId);
+			ResultSet rs=pstmt.executeQuery();
+			while(rs.next()) {
+				cust= new CustomerBean();
+				cust.setCustomerid(rs.getInt(1));
+				cust.setCustomerName(rs.getString(2));
+				cust.setCustomerAddress(rs.getString(3));
+				cust.setCustomerTown(rs.getString(4));
+				cust.setCustomerZip(rs.getInt(5));
+				cust.setCustomerEmail(rs.getString(6));
+				cust.setCustomerPhone(rs.getString(7));
+				l1.add(cust);
+			}
+			return l1;
+
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }

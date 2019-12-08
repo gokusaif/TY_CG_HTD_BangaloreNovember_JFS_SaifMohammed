@@ -11,6 +11,9 @@ public interface ClientDAO {
 	public boolean deleteContract(int contractId);
 
 	public List<ClientBean> showContracts();
+	
+	public List<ClientBean> viewContracts(int contractId);
+
 
 	public boolean updateProductId(int contractId,int productId);
 

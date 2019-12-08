@@ -118,5 +118,29 @@ public class ProductDAOImpl implements ProductDAO {
 		
 	}
 
+
+	@Override
+	public List<ProductBean> viewProducts(int productId) {
+		List<ProductBean> l1= new ArrayList<ProductBean>();
+		try(Connection con=DriverManager.getConnection(prop.getProperty("dbUrl"),prop.getProperty("dbUser"),
+				prop.getProperty("dbPassword"));Statement stmt=con.createStatement(); 
+				PreparedStatement pstmt=con.prepareStatement(prop.getProperty("selectQuery"))){
+			pstmt.setInt(1,productId);
+			ResultSet rs=pstmt.executeQuery();
+			while(rs.next()) {
+				prod= new ProductBean();
+				prod.setProductName(rs.getString(1));
+				prod.setProductId(rs.getInt(2));
+				prod.setProductQuantity(rs.getString(3));
+				l1.add(prod);
+			}
+			return l1;
+
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 	
 }

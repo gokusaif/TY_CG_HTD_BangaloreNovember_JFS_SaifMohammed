@@ -11,7 +11,9 @@ public interface ProductServices {
 	public boolean insertProduct(ProductBean prod);
 	
 	public List<ProductBean> showProducts();
-	
+
+	public List<ProductBean> viewProducts(int productId);
+
 	public boolean updateProduct(int productId,String quantity);
 	
 

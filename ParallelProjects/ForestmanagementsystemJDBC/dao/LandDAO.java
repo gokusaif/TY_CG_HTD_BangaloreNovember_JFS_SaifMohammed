@@ -12,6 +12,8 @@ public boolean deleteLandDetails(int landId);
 	
 	public List<LandBean> showLandDetails();
 	
+	public List<LandBean> viewLandDetails(int landId);	
+	
 	public boolean updateLandDetails(int landId,int landValue);
 
 }

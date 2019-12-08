@@ -16,7 +16,7 @@ public class Land {
 		while(true) {
 			System.out.println("Enter option to perform operation");
 			System.out.println(" 1.Insert land details\n 2.Delete land details\n 3.Update land details\n "
-					+ "4.View all land details\n 5.Home");
+					+ "4.View all land details\n 5.view land details\n 6.Home");
 			int choice=sc.nextInt();
 
 			switch(choice) {
@@ -66,6 +66,19 @@ public class Land {
 				}
 				break;
 			case 5:
+				System.out.println("enter land id to display details");
+				int id2=sc.nextInt();
+				List<LandBean> l2= services.viewLandDetails(id2);
+				if(l2.size()!=0) {
+					for (LandBean land1 : l2) {
+						System.out.println(land1);
+					} }
+				else {
+					System.out.println("no data");
+				}
+				
+				break;
+			case 6:
 				Admin.main(args);
 				break;
 			default:
