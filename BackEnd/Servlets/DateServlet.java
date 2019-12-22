@@ -19,7 +19,7 @@ public class DateServlet extends HttpServlet  {
 		resp.setContentType("text/html");
 		resp.setHeader("refresh","5");
 		PrintWriter out=resp.getWriter();
-		out.print("<html>");
+out.print("<html>");
 		out.print("<h2>Current system date & time - "+date+"</h2>");
 		out.print("</html>");
 	}
