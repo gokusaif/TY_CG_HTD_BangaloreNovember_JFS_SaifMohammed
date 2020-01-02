@@ -1,0 +1,12 @@
+nav {
+    font-size: larger;
+    background: teal;
+    position: sticky;
+}
+ul li{
+    list-style: none;
+}
+ul li a{
+    text-decoration: none;
+    padding: 10px;
+}
