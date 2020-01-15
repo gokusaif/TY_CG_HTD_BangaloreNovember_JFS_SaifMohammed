@@ -1,0 +1,32 @@
+<div class="alert alert-danger" *ngIf='msg'>{{msg}}</div>
+<ul class="list-group">
+    <li *ngFor='let name of names' class="list-group-item"
+    [ngClass]='{
+        "list-group-item-success" : name.charAt(0) === "s",
+        "list-group-item-danger" : name.charAt(0) !== "s"
+    }'
+    [ngStyle]='{
+     "fontSize" : name.length < 5 ? "25px" : "15px"}'
+     > {{name}}
+        <button type="button" class="btn btn-primary float-right" (click)='deleteName(name)'>Delete</button>
+    </li>
+</ul>
+
+<div *ngIf='10 < 7; then trueBlock else falseBlock'></div>
+
+<ng-template #trueBlock>
+    True block
+</ng-template>
+
+<ng-template #falseBlock>
+    False block
+</ng-template>
+
+<div [ngSwitch]='person'>
+    <div *ngSwitchCase='"suraj"'>Suraj</div>
+    <div *ngSwitchCase='"saif"'>Saif</div>
+    <div *ngSwitchCase='"omkar"'>Omkar</div>
+    <div *ngSwitchCase='"sunil"'>Sunil</div>
+    <div *ngSwitchDefault>Default</div>
+
+</div>

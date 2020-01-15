@@ -1,0 +1,23 @@
+<div class="alert alert-danger" role="alert" *ngIf='msg' (click)='click()'>
+    {{msg}} </div>
+<div class="container mt-3">
+    <table class="table table-bordered" >
+        <tr class="thead-dark">
+            <th>index</th>
+            <th>name</th>
+            <th>image</th>
+            <th>price</th>
+            <th>Delete</th>
+        </tr>
+    <tr *ngFor='let product of products;index as i' [ngStyle]='{
+        "background-color" : product.price < 10000 ? "green" : "red "}' appColor>
+        <td>{{i+1}}</td>
+        <td>{{product.name}}</td>
+        <td>{{product.image}}</td>
+        <td>{{product.price}}</td>
+        <td><button type="button" class="btn btn-danger" (click)='deleteImg(product)'>Delete</button></td>
+    </tr>
+    </table>
+</div>
+
+

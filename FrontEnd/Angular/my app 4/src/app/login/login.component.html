@@ -1,0 +1,24 @@
+<div class="alert alert-danger" *ngIf='failure'>{{failure}}</div>
+<div class="alert alert-danger" *ngIf='exception'>{{exception}}</div>
+<div class="col-md-4 offset-md-4 mt-4">
+    <form #loginForm='ngForm' (ngSubmit)='login(loginForm)' >
+        <div class="card">
+            <div class="card-header">
+                Login
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" #email='ngModel' ngModel
+                    required email  class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" #password='ngModel' ngModel
+                    required class="form-control">
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-primary" type="submit">Login</button>
+    </form>
+</div>

@@ -1,0 +1,14 @@
+footer {
+    background: teal;
+    font-size: larger ;
+    position: fixed;
+    bottom: 0;
+    
+}
+
+footer p {
+    background: teal;
+    font-size: larger;
+    text-align: center;
+    margin: 0px;
+}

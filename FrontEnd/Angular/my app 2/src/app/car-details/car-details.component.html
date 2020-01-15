@@ -1,0 +1,9 @@
+<h4 *ngIf='!carDetails'>Please select a car</h4>
+<div class="col-md-9 float-left" *ngIf='carDetails'>
+    <img src="{{carDetails.img}}" alt="" width="100%" height="400px">
+    <h4 class="text-center">{{carDetails.name}}</h4>
+    <p>{{carDetails.details}}</p>
+</div>
+
+<input type="text" name="" #input id="" >
+<button type="submit" (click)='sendData(input.value)'>Submit</button>
