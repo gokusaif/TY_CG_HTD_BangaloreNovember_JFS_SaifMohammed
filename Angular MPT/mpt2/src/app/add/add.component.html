@@ -1,0 +1,23 @@
+<form class="col-md-4 offset-md-4" #post='ngForm' (ngSubmit)='add(post)' >
+    <div class="form-group">
+        <label for="userId">UserId</label>
+        <input type="text" name="userId" id="userId"  #userId='ngModel' ngModel 
+         required class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="id">Id</label>
+        <input type="text" name="id" id="id"  #id='ngModel' ngModel
+         required class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="title">title</label>
+        <textarea name="title" id="title"  #title='ngModel' ngModel
+        required class="form-control"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="body">body</label>
+        <textarea name="body" id="body"  #body='ngModel' ngModel 
+        required class="form-control" cols="30" rows="10"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Add</button>
+</form>
